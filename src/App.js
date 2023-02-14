@@ -69,14 +69,15 @@ const App = () => {
           <button type="button" onClick={toggleReadme} className="readmeButton">
             Help
           </button>
-        </div>    
-             )}
-             {showReadme && <Readme />}
-             </div>
-           );    
-         };
+        </div>   
+   )}
+   {showReadme && <Readme />}
+   </div>
+ );    
+};
 
 export default App;
+
 
 // The code defines the main component App that contains the game logic and display. The App component uses 
 // React's useState hook to manage the game's state. The component handles the state of the game, including the

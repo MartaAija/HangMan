@@ -1,29 +1,41 @@
-import React, { Component } from 'react';
-import marked from 'marked';
+import React from 'react';
+import { Remarkable} from 'remarkable';
 
-class Readme extends Component {
-  state = {
-    markdown: ''
-  };
+const Readme = () => {
+  const md = new Remarkable();
+  const content = `# Hangman Game
 
-  async componentDidMount() {
-    const response = await fetch('./readme.md');
-    const markdown = await response.text();
+  ## Introduction
+  Welcome to Hangman Game! This is a simple implementation of the classic word guessing game where the player has to guess the word by suggesting letters. The player loses the game if they make six wrong guesses.
   
-    this.setState({ markdown });
-  }
-
-  render() {
-    const html = marked(this.state.markdown);
-
-    return <div dangerouslySetInnerHTML={{ __html: html }} />;
-  }
-}
+  ## Installation
+  To install and run the game on your local machine, follow these steps:
+  
+  1. Clone the repository to your local machine:
+  git clone https://github.com/<username>/hangman-game.git
+  2. Change into the project directory:
+  cd hangman-game
+  3. Install the required dependencies:
+  npm install
+  4. Start the app:
+  npm start
+  5. Open your browser and navigate to http://localhost:3000 to play the game.
+  
+  ## Rules 
+  The game starts with a word chosen randomly from a predefined list of words.
+  The player has to guess the word by suggesting letters one by one.
+  For each incorrect guess, a part of the hangman figure is drawn. The player loses the game if they "hang" the man.
+  The player wins the game if they guess all the letters in the word before they "hang" the man. 
+  #### Note that you need to press the letter again once you have the word correct!
+  
+  ## Enjoy the game! 
+  Feel free to modify the code and make it your own. Have fun!`;
+  
+  return (
+    <div className="readme-content" dangerouslySetInnerHTML={{__html: md.render(content)}} />
+  );
+};
 
 export default Readme;
 
-// This is a React component that fetches the content of a markdown file and displays it in a webpage using the 
-// marked library. The marked library is used to convert the markdown content into HTML, which is then rendered to 
-// the page using dangerouslySetInnerHTML. It is generally safe to use dangerouslySetInnerHTML when the source of 
-// the markdown content is trusted, but one should always be cautious when using it since it can potentially lead 
-// to security vulnerabilities if untrusted content is rendered on the page.
+// Here I am using the dangerouslySetInnerHTML prop to render the HTML generated from the parsed markdown content. 

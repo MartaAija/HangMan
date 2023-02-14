@@ -25,3 +25,4 @@ The player wins the game if they guess all the letters in the word before they "
 
 ## Enjoy the game! 
 Feel free to modify the code and make it your own. Have fun!
+
